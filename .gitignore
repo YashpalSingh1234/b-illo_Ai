@@ -1,0 +1,10 @@
+Llama-2-7b-chat-finetune/
+node_modules
+for_rag
+
+finetunedModel
+.env
+
+## remove notebook
+
+Notebook/

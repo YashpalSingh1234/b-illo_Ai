@@ -1,0 +1,10 @@
+Machine Learning Basics
+Machine learning is a subset artificial intelligence that enables systems to learn and improve
+
+Type of Machine Learning
+1. Supervised Learning: Learning with labeled data 
+2. Unsupervised Learning: Finding patterns in unlabeled data
+3. Reinforcement Learning: Learning throgh rewards and penalties
+
+Application include image recognition, speech processing, and recommendation systems
+
