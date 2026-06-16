@@ -4,8 +4,13 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 # ===== MODEL =====
-BASE_MODEL = "NousResearch/Llama-2-7b-chat-hf"
-ADAPTER_PATH = str(PROJECT_ROOT / "Llama-2-7b-chat-finetune")
+BASE_MODEL = "microsoft/Phi-3-mini-4k-instruct"
+MODEL_CACHE_DIR = str(PROJECT_ROOT / "models")
+USE_LOCAL_MODEL_CACHE = False
+
+# Keep empty unless you have a Phi-3-mini adapter trained for BASE_MODEL.
+ADAPTER_PATH = ""
+
 
 # ===== VECTOR DB =====
 COLLECTION_NAME = "pdf_document"

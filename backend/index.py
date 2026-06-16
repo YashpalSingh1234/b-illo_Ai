@@ -160,6 +160,7 @@ class VectorStore:
 
 
 _vectorstore = None
+_vectorstore_initialized = False
 
 
 def get_vectorstore():
@@ -171,15 +172,51 @@ def get_vectorstore():
     return _vectorstore
 
 
-def build_index():
+def initialize_vectorstore():
+    global _vectorstore_initialized
+
+    if _vectorstore_initialized:
+        return get_vectorstore()
+
+    print("Initializing Chroma...")
+    print(f"VECTOR_DB_PATH: {VECTOR_DB_PATH}")
+    print(f"COLLECTION_NAME: {COLLECTION_NAME}")
+    print(f"PDF_DIR: {PDF_DIR}")
+    print(f"EMBEDDING_MODEL: {EMBEDDING_MODEL}")
+    print(f"CHUNK_SIZE: {CHUNK_SIZE}")
+    print(f"CHUNK_OVERLAP: {CHUNK_OVERLAP}")
+
+    vector_db_exists = os.path.exists(VECTOR_DB_PATH)
     vectorstore = get_vectorstore()
 
-    if vectorstore.collection.count() > 0:
+    if vector_db_exists and vectorstore.collection.count() > 0:
         print("Using existing vectorstore")
-        return
+        print("Vector store initialized")
+        _vectorstore_initialized = True
+        return vectorstore
 
+    print("No vectorstore found")
+    print("Creating vectorstore...")
+    print("Loading PDFs...")
     chunks = create_chunks()
+
+    if not chunks:
+        print("No PDF chunks found. Vectorstore is empty.")
+        print("Vector store initialized")
+        _vectorstore_initialized = True
+        return vectorstore
+
+    print("Creating embeddings...")
     text = [doc.page_content for doc in chunks]
     embeddings = get_embedding_manager().generate_embeddings(text)
+
+    print("Persisting database...")
     vectorstore.add_documents(chunks, embeddings)
-    print("Index created")
+    print("Vectorstore created")
+    print("Vector store initialized")
+    _vectorstore_initialized = True
+    return vectorstore
+
+
+def build_index():
+    return initialize_vectorstore()

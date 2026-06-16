@@ -144,6 +144,40 @@
   text-align: right;
 }
 
+.source-scores {
+  display: grid;
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.source-score {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  color: #475569;
+}
+
+.source-rank,
+.source-value {
+  font-weight: 700;
+  color: #0f766e;
+}
+
+.source-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.source-page {
+  color: #64748b;
+}
+
 .message-wrapper.assistant .message-time {
   text-align: left;
 }

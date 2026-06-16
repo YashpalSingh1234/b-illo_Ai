@@ -87,6 +87,18 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
                     <div className="message-text">
                     < Markdown>{message.text}</Markdown> 
                     </div>
+                    {message.role === 'assistant' && message.sources && message.sources.length > 0 && (
+                      <div className="source-scores">
+                        {message.sources.map((source, sourceIndex) => (
+                          <div className="source-score" key={`${source.source}-${source.page}-${sourceIndex}`}>
+                            <span className="source-rank">#{sourceIndex + 1}</span>
+                            <span className="source-name">{source.source}</span>
+                            <span className="source-page">Page {source.page}</span>
+                            <span className="source-value">Score {(source.score * 100).toFixed(1)}%</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                     <div className="message-time">
                       {formatTime(message.timestamp)}
                     </div>

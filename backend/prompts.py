@@ -40,3 +40,15 @@ Answer:
 
 {answer}
 """
+
+
+def fallback_prompt(question):
+    return f"""
+Answer the user's question using your general knowledge.
+Do not claim that the answer came from the uploaded documents.
+
+Question:
+{question}
+
+Answer:
+"""

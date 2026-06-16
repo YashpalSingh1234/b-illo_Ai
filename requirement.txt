@@ -8,3 +8,11 @@ faiss-cpu
 chromadb
 langchain-groq
 python-dotenv
+fastapi
+uvicorn
+pydantic
+torch
+transformers>=4.41.2
+accelerate
+peft
+bitsandbytes
