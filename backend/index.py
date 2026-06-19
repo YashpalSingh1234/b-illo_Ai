@@ -4,7 +4,7 @@ from typing import Any, List
 
 import chromadb
 import numpy as np
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import DirectoryLoader, PyMuPDFLoader
 from sentence_transformers import SentenceTransformer
 

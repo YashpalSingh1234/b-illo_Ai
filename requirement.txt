@@ -1,17 +1,23 @@
+--extra-index-url https://download.pytorch.org/whl/cu118
+
+torch==2.7.1
+torchvision==0.22.1
+torchaudio==2.7.1
+
 langchain
 langchain-core
 langchain-community
+
 pypdf
 pymupdf
 sentence-transformers
 faiss-cpu
 chromadb
-langchain-groq
-python-dotenv
+
 fastapi
 uvicorn
 pydantic
-torch
+
 transformers>=4.41.2
 accelerate
 peft
